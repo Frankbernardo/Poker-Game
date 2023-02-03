@@ -1,0 +1,115 @@
+package deck;
+
+import card.Card;
+
+public class Deck {
+	private Card[] cards;
+	private Card[] discardPile;
+	
+	
+	//Attributes go here
+	
+	public Deck() {
+		//Create the attribute arrays with a size of 52
+		cards = new Card[52];
+		discardPile = new Card[52];
+	}
+	
+	//This method populates the deck object with cards
+	public void createDeck() {
+		int suitIndex;
+		int cardRank;
+		
+		for(int i=0; i<cards.length; i++) {
+			
+			//Determine suit index
+			if(i < 13){
+			    suitIndex = 0;
+			}
+			else if(i < 26){
+			    suitIndex = 1;
+			}
+			else if(i < 39){
+			    suitIndex = 2;
+			}
+			else {
+			    suitIndex = 3;
+			}
+			
+			//Calc card rank
+			cardRank = ((i) % 13) + 1;
+			
+			cards[i] = new Card(i, suitIndex, cardRank);
+		}
+	}
+
+	public void shuffleDeck() {
+		Card tempCard;
+		for(int i=0; i<cards.length; i++) {
+			int randomCard =(int) (Math.random()* cards.length);
+			tempCard = cards[randomCard];
+			cards[randomCard] = cards[i];
+			cards[i] = tempCard;
+			
+		}
+		
+		//Create a routine to mix up the deck
+	}
+
+	public void addDiscard(Card card) {
+		//Lab 11.1
+	}
+
+	public void addDiscard(Card[] discards) {
+		//Lab 11.1
+	}
+
+	public void restack() {
+		//Lab 11.1
+	}
+	
+	
+
+	//To return a single Card object and leave in the Deck
+	public Card getCard(int index) {
+		
+		return cards[index];
+	}
+	
+	//To return a Card object and remove from the Deck
+	public Card removeCard(int index) {
+		//We will take of this later in the project
+		
+		return null;
+	}
+
+	public Card[] getCards() {
+		return cards;
+	}
+
+	public Card[] getDiscardPile() {
+		return discardPile;
+	}
+	
+	@Override
+	public String toString() {
+		String deckString = "";
+		for(int i = 0; i<cards.length; i++) {
+			if(i !=0 && i % 13==0) {
+				deckString += "\n";
+			}
+			deckString += cards[i] + " "; 
+		}
+		return deckString;
+	}
+
+	
+	//To return the entire deck
+	
+	
+	//To return the discardPile
+	
+
+	//We need a toString()
+	
+}
