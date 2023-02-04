@@ -1,28 +1,34 @@
 package Player;
 
+import hand.Hand;
+
 public class Player {
 	private String name;
 	private String id;
 	private int bank;
+	private Hand hand;
 	
-	public Player() {
+	public Player(Hand hand) {
 		name = "joecool";
 		id = "123432";
 		bank = 1000;
+		this.hand = hand;
 		
 	}
 	
-	public Player(String name, String newID) {
+	public Player(String name, String newID, Hand hand) {
 		this.name = name;
 		id = newID;
+		bank = 3000;
+		this.hand = hand;
 		
 	}
 	
-	public Player(String name, String id, int bank) {
+	public Player(String name, String id, int bank, Hand hand) {
 		this.name = name;
 		this.id = id;
 		this.bank = bank;
-		
+		this.hand = hand;
 	}
 
 	public String getName() {
@@ -49,6 +55,12 @@ public class Player {
 		this.bank = bank;
 	}
 	
+	
+	
+	public Hand getHand() {
+		return hand;
+	}
+
 	@Override
 	public String toString() {
 		return "Player " + name + ", id: " + " has a bank of $" + bank;
