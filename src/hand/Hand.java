@@ -65,12 +65,12 @@ public class Hand {
 	
 	//Put a card into a specific element within the Hand
     public void setCard(int index, Card dealtCard){
-		
+		cards[index] = dealtCard;
     }
 	
 	//Get a specific Card object at a specific index
 	public Card getCard(int index) {
-		
+		return cards[index];
 	}
 	
 	//Get a specific Card object at a specific index and remove from Hand
