@@ -1,5 +1,6 @@
 import Player.Dealer;
 import Player.Player;
+import card.Card;
 import hand.Hand;
 import deck.Deck;
 import helpers.PokerSolver;
@@ -18,14 +19,17 @@ public class Assignment1_2 {
 		//Loop 10 times.  
 		//If the loop counter is even, deal a card to player1.
 		//If the loop counter is odd, deal a card to player2.
+		//print the deck
+		System.out.println("before deal: \n" + dealer.getDeck());
 		for (int i = 0; i < 10; i++) {
 			if (i % 2 == 0) {
-				dealer.dealCard(player1, i);
+				dealer.dealCard(player1);
 			} else {
-				dealer.dealCard(player2, i);
+				dealer.dealCard(player2);
 			}
 		}
-
+		// print deck again
+		System.out.println("after deal: \n" + dealer.getDeck());
 		//Use PokerSolver's evaluatePokerGame method to see who won
 		//Remember you have to send each player's hand.
 		//How do you get the player's Hand object? 
@@ -49,6 +53,26 @@ public class Assignment1_2 {
 				else {
 				System.out.println("It's a tie") ;
 				}
+		
+		// send the hands to the discard pile
+		
+		// 1 get the hangs
+		Hand tempHand1 = player1.getHand();
+		Hand tempHand2 = player2.getHand();
+		//get the card array from each hand
+		Card[] tempCards1 = tempHand1.getCards();
+		Card[] tempCards2 = tempHand2.getCards();
+		//get deck from dealer
+		Deck tempDeck = dealer.getDeck();
+		// call the decks addDiscard
+		tempDeck.addDiscard(tempCards1);
+		tempDeck.addDiscard(tempCards2);
+		// print the deck
+		System.out.println("after hands in discard pile: \n" + dealer.getDeck());
+		//restack the deck
+		dealer.getDeck().restack();
+		System.out.println("after restack: \n" + dealer.getDeck());
 	}
+
 
 }

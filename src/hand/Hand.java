@@ -29,7 +29,7 @@ public class Hand {
 	
 	public Hand(Card[] dealtCards) {
 		//Create the empty array
-		
+		cards = new Card [dealtCards.length];
 		//Loop through the dealtCards array and add each card object to the cards array
 		//cards = new Card[dealtCards.length];
 		for (int i = 0; i < dealtCards.length; i++) {

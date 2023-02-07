@@ -20,10 +20,10 @@ public class Dealer {
 		
 	}
 	
-	public void dealCard(Player player, int index) {
+	public void dealCard(Player player) {
 		//Deal the card at index to the players hand
 		//assignment 1.2
-		Card tempCard = deck.getCard(index);
+		Card tempCard = deck.removeCard(0);
 		Hand playerHand = player.getHand();
 		playerHand.addCard(tempCard);
 		
@@ -36,8 +36,13 @@ public class Dealer {
 	}
 	
 	public void reshuffleDeck() {
-		deck.shuffleDeck();
-		
+		Card[] tempDeck = deck.getCards();
+		Card[] tempDiscard = deck.getDiscardPile();
+		int totalCards = tempDeck.length + tempDiscard.length;
+		int reshuffleCount = (int)(totalCards*.7);
+		if (tempDeck.length < reshuffleCount) {
+		deck.restack();
+		}
 		//lab 11.1 replace with logic to reshuffle
 	}
 
