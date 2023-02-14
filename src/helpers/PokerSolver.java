@@ -33,8 +33,8 @@ public class PokerSolver {
 		handScore = 0;
 		
 		//Added hand.getHand to cover when hand is changed to ArrayList
+		//hand.getHandRank();
 		getHandData(hand.getCards());
-
 		//First check for groups: pair, 2 pair, trips, full house, 4 of a kind
 		//If those don't exist, move on
 		if(!checkGroups(hand)) {

@@ -121,7 +121,7 @@ public class Deck {
 			}
 			deckString += cards.get(i) + " "; 
 		}
-		deckString +="\nDiscard pile";
+		deckString +="\nDiscard pile:";
 		for (int i=0; i<discardPile.size(); i++) {
 			if(i !=0 && i % 13==0) {
 				deckString += "\n";
