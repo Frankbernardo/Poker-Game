@@ -1,9 +1,8 @@
 package helpers;
 
 import java.util.Arrays;
-
 import card.Card;
-import hand.Hand;
+import hand.PokerHand;
 
 public class PokerSolver {
 	private static String[] cardFaces = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"};
@@ -12,7 +11,7 @@ public class PokerSolver {
 	private static int[] handSuit;
 	private static int handScore = 0;
 	
-	public static void evaluateHand(Hand hand) {
+	public static void evaluateHand(PokerHand hand) {
 		/* Evaluate hand to determine rank:
 	    	High Card: 1
 	    	Pair: 2
@@ -33,8 +32,8 @@ public class PokerSolver {
 		handScore = 0;
 		
 		//Added hand.getHand to cover when hand is changed to ArrayList
-		//hand.getHandRank();
 		getHandData(hand.getCards());
+
 		//First check for groups: pair, 2 pair, trips, full house, 4 of a kind
 		//If those don't exist, move on
 		if(!checkGroups(hand)) {
@@ -49,7 +48,7 @@ public class PokerSolver {
 		}
 	}
 		
-	public static int[] evaluatePokerGame(Hand...hands) {
+	public static int[] evaluatePokerGame(PokerHand...hands) {
 		int[] rankings = new int[hands.length];
 		int[] handRanks = new int[hands.length];
 		int[] handScores = new int[hands.length];
@@ -259,7 +258,7 @@ public class PokerSolver {
 		Arrays.sort(handSuit);			
 	}
 
-	private static boolean checkGroups(Hand hand) {
+	private static boolean checkGroups(PokerHand hand) {
 		int[] pairCounts = {1,1}; //Set default
 		int[] pairFace = {0, 0};
 		
@@ -365,7 +364,7 @@ public class PokerSolver {
 		return foundGroup;
 	}
 
-	private static boolean checkStraits(Hand hand, int[] handFace) {
+	private static boolean checkStraits(PokerHand hand, int[] handFace) {
 		boolean straight = true;
 		boolean hasAce;
 		boolean aceTwo = false;
@@ -403,7 +402,7 @@ public class PokerSolver {
 		return straight;
 	}
 
-	private static boolean checkFlush(Hand hand, int[] handSuit) {
+	private static boolean checkFlush(PokerHand hand, int[] handSuit) {
 		boolean flush = true;
 		
 		for(int i=1; i<handSuit.length; i++) {
@@ -425,7 +424,7 @@ public class PokerSolver {
 		return flush;
 	}
 
-	private static void straightFlush(Hand hand, int[] handFace) {
+	private static void straightFlush(PokerHand hand, int[] handFace) {
 		//First, default attributes to a straight flush
 		hand.setHandDescr("Straight Flush");
 		hand.setHandRank(9);
@@ -439,10 +438,11 @@ public class PokerSolver {
 		
 	}
 
-	private static void setHighCard(Hand hand, int[] handFace) {		
+	private static void setHighCard(PokerHand hand, int[] handFace) {		
 		hand.setHandDescr("High Card " + cardFaces[handFace[handFace.length-1]-1]);
 		hand.setHandRank(1);
 		hand.setHandScore(handFace[handFace.length-1]);
 		hand.setHighCard(handFace[handFace.length-2]);
 	}
 }
+

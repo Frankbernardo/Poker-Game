@@ -1,17 +1,25 @@
 package Player;
 
 import card.Card;
+
 import deck.Deck;
 import hand.Hand;
 
-public class Dealer {
+public class Dealer extends Player {
 	private Deck deck;
 	
 	public Dealer(Deck deck) {
 		this.deck = deck;
-		
 		prepareDeck();
 	}
+	
+	public Dealer(Deck deck, Hand hand) {
+		super("Dealer", "dealer", 0, hand);
+		this.deck = deck;
+		prepareDeck();
+	}
+
+	
 
 	private void prepareDeck() {
 		deck.createDeck();

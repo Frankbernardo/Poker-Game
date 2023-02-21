@@ -8,6 +8,8 @@ public class Player {
 	private int bank;
 	private Hand hand;
 	
+	public Player() {}
+	
 	public Player(Hand hand) {
 		name = "joecool";
 		id = "123432";

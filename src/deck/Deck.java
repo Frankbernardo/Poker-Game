@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import card.Card;
 
 public class Deck {
-	private ArrayList<Card> cards;
+	protected ArrayList<Card> cards;
 	private ArrayList<Card> discardPile;
 	
 	

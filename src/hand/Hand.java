@@ -6,10 +6,10 @@ import card.Card;
 import deck.Deck;
 import helpers.PokerSolver;
 
-public class Hand {
+public abstract class Hand {
 	//Create the attributes
 	private ArrayList<Card> cards;
-	private String handDescr;
+
 	private int handScore;
 	private int handRank;
 	private int highCard;
@@ -24,7 +24,7 @@ public class Hand {
 		//Only need to establish an empty cards array here
 		
 		cards = new ArrayList<Card>();
-		handDescr = " ";
+		//handDescr = " ";
 		handScore = 0;
 		handRank = 0;
 		highCard = 0;
@@ -92,11 +92,7 @@ public class Hand {
 		return removeCard ;
 	}
 	
-	public void evaluateHand() {
-		//Call the PokerSolver class to evaluate the hand (see PokerSolver UML)
-		//Note: "this" represents the current object
-		PokerSolver.evaluateHand(this);
-	}
+	public abstract void evaluateHand(); 
 	
 	public void discard(Deck deck, int index) {
 		Card discardCard = removeCard(index);
@@ -134,13 +130,7 @@ public class Hand {
 		
 	}
 
-	public String getHandDescr() {
-		return handDescr;
-	}
-
-	public void setHandDescr(String handDescr) {
-		this.handDescr = handDescr;
-	}
+	
 
 	public int getHandScore() {
 		return handScore;
