@@ -102,7 +102,7 @@ public class Card {
 
 	private void setCardImage() {
 		//We will update this later in the project
-		this.cardImage = "";
+		this.cardImage = "file:images/card/" + Integer.toString(cardNumber+1) + ".png";
 	}
 	@Override
 	public String toString() {

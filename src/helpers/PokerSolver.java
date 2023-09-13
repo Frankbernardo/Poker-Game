@@ -296,7 +296,7 @@ public class PokerSolver {
 			checkRank = (pairCounts[0] == 4 || pairCounts[1] == 4) ? 8 : checkRank;
 
 			//Full house?
-			checkRank = ((pairCounts[0] + pairCounts[1]) == 5) ? 7 : checkRank;
+			checkRank = (checkRank == 0 && (pairCounts[0] + pairCounts[1]) == 5) ? 7 : checkRank;
 			
 			//Trips?
 			checkRank = (checkRank == 0 && pairCounts[0] == 3) ? 4 : checkRank;
@@ -313,13 +313,13 @@ public class PokerSolver {
 		hand.setHandRank(checkRank);
 		
 		if(pairFace[0] > 0) {
-			suffix = cardFaces[pairFace[0] - 1] + "'s";
+			suffix = cardFaces[pairFace[0] - 1] + "s";
 			handScore += pairFace[0] * pairCounts[0];
 			
 			if(pairFace[1] > 0) {
 				suffix = (pairFace[0] > pairFace[1])
-						? suffix + " & " + cardFaces[pairFace[1] - 1] + "'s"
-						: cardFaces[pairFace[1] - 1] + "'s & " +  suffix;
+						? suffix + " & " + cardFaces[pairFace[1] - 1] + "s"
+						: cardFaces[pairFace[1] - 1] + "s & " +  suffix;
 				
 				handScore += pairFace[1] * pairCounts[1];
 

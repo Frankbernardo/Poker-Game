@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import card.Card;
 
-public class Deck {
+public abstract class Deck {
 	protected ArrayList<Card> cards;
 	private ArrayList<Card> discardPile;
 	
@@ -18,32 +18,7 @@ public class Deck {
 	}
 	
 	//This method populates the deck object with cards
-	public void createDeck() {
-		int suitIndex;
-		int cardRank;
-		
-		for(int i=0; i< 52; i++) {
-			
-			//Determine suit index
-			if(i < 13){
-			    suitIndex = 0;
-			}
-			else if(i < 26){
-			    suitIndex = 1;
-			}
-			else if(i < 39){
-			    suitIndex = 2;
-			}
-			else {
-			    suitIndex = 3;
-			}
-			
-			//Calc card rank
-			cardRank = ((i) % 13) + 1;
-			
-			cards.add(new Card(i, suitIndex, cardRank));
-		}
-	}
+	public abstract void createDeck();
 
 	public void shuffleDeck() {
 		Card tempCard;
